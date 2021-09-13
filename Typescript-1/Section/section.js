@@ -32,7 +32,7 @@ var Section = /** @class */ (function () {
     Section.prototype.getTeacherByName = function (name) {
         for (var _i = 0, _a = this.teachers; _i < _a.length; _i++) {
             var teacher = _a[_i];
-            if (name.toLocaleLowerCase() == teacher.getName().toLocaleLowerCase()) {
+            if (name.toLowerCase() == teacher.getName().toLowerCase()) {
                 return teacher;
             }
         }

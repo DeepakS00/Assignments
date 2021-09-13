@@ -6,17 +6,16 @@ var ReportCard = /** @class */ (function () {
         this.marks = marks;
         this.student = student;
     }
-    ReportCard.prototype.average = function () {
+    ReportCard.prototype.totalNumber = function () {
         var total = 0;
         for (var _i = 0, _a = this.marks; _i < _a.length; _i++) {
             var x = _a[_i];
             total += x.getMarks();
         }
-        var averageValue = total / this.marks.length;
-        return averageValue;
+        return total;
     };
     ReportCard.prototype.percentage = function () {
-        return (this.average());
+        return (this.totalNumber() / this.marks.length);
     };
     return ReportCard;
 }());

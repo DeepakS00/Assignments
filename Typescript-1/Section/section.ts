@@ -25,7 +25,7 @@ export class Section {
     
     getTeacherByName(name: string) {
         for (let teacher of this.teachers) {
-            if (name.toLocaleLowerCase() == teacher.getName().toLocaleLowerCase()) {
+            if (name.toLowerCase() == teacher.getName().toLowerCase()) {
                 return teacher;
             }       
         }
