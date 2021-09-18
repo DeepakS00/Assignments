@@ -6,6 +6,13 @@ var ReportCard = /** @class */ (function () {
         this.marks = marks;
         this.student = student;
     }
+    ReportCard.prototype.getMarks = function () {
+        for (var _i = 0, _a = this.marks; _i < _a.length; _i++) {
+            var i = _a[_i];
+            // console.log('\t'+i.showMarks());
+            console.log(i);
+        }
+    };
     ReportCard.prototype.totalNumber = function () {
         var total = 0;
         for (var _i = 0, _a = this.marks; _i < _a.length; _i++) {

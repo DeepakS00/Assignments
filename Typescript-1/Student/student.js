@@ -26,7 +26,12 @@ var Student = /** @class */ (function (_super) {
         this.reportCard = reportCard;
     };
     Student.prototype.getReportCard = function () {
-        return this.reportCard;
+        // console.log('Marks:- ')
+        this.reportCard.getMarks();
+    };
+    Student.prototype.display = function () {
+        console.log("Name: \"" + this.name + "\"\nDOB: " + this.getDateOfBirth());
+        this.getReportCard();
     };
     return Student;
 }(person_1.Person));

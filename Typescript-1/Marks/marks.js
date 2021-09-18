@@ -12,6 +12,9 @@ var Marks = /** @class */ (function () {
     Marks.prototype.getMarks = function () {
         return this.marks;
     };
+    Marks.prototype.showMarks = function () {
+        return this.subject.getName() + ": " + this.marks;
+    };
     return Marks;
 }());
 exports.Marks = Marks;

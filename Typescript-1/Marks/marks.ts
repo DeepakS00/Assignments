@@ -10,5 +10,9 @@ export class Marks {
     getMarks(): number {
         return this.marks;
     }
+
+    showMarks() {
+        return `${this.subject.getName()}: ${this.marks}`
+    }
 }
     

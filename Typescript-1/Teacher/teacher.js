@@ -32,7 +32,10 @@ var Teacher = /** @class */ (function (_super) {
         return this.salary;
     };
     Teacher.prototype.getSubject = function () {
-        return this.subject;
+        return this.subject.getName();
+    };
+    Teacher.prototype.display = function () {
+        console.log("Name: \"" + this.name + "\"\nDOB: " + this.getDateOfBirth() + "\nSalary: " + this.salary + "\nSubject: " + this.getSubject());
     };
     return Teacher;
 }(person_1.Person));

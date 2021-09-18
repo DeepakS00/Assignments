@@ -1,7 +1,7 @@
 import { IPerson } from './interface';
 
 export abstract class Person implements IPerson {
-    constructor(protected name: string, protected dob: string) {
+    constructor(protected name: string, protected date: number, protected month: number, protected year: number) {
     }
 
     getName() {
@@ -9,18 +9,18 @@ export abstract class Person implements IPerson {
     }
 
     getDateOfBirth() {
-        return new Date(this.dob).toDateString();
+        return new Date(this.year, this.month-1, this.date).toDateString();
     }
 
     getAge(): number {
         const currDate = new Date();
-        const dateOfBirth = new Date(this.dob);
-        const birthMonth = dateOfBirth.getMonth();
-        const birthDate = dateOfBirth.getDate();
+        const dob = new Date(this.year, this.month-1, this.date);
+        const birthMonth = dob.getMonth();
+        const birthDate = dob.getDate();
 
         let age: number;
-        if (currDate > dateOfBirth) {
-            age = (currDate.getFullYear() - dateOfBirth.getFullYear()) - 1;
+        if (currDate > dob) {
+            age = (currDate.getFullYear() - dob.getFullYear()) - 1;
             if (
                 currDate.getMonth() > birthMonth || 
                 (currDate.getMonth() == birthMonth &&  currDate.getDate() >= birthDate)

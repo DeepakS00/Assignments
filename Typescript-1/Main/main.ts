@@ -33,38 +33,38 @@ const marksAllotment = (
 
 // Students-----------------------------------------------------------
 
-const vinay = new Student("Vinay Sharma", "11 june 1996");
+const vinay = new Student("Vinay Sharma", 31, 8, 1997);
 const report1 = new ReportCard(marksAllotment(67, 89, 90, 78), vinay);
 vinay.setReportCard(report1);
 
-const kishan = new Student("Kishan Patel", "4 jan 1997");
+const kishan = new Student("Kishan Patel", 4, 1, 1998);
 const report2 = new ReportCard(marksAllotment(89, 78, 88, 90), kishan);
 kishan.setReportCard(report2);
 
-const nikhil = new Student("Nikhil Solanki", "8 feb 1995");
+const nikhil = new Student("Nikhil Solanki", 8, 2, 1995);
 const report3 = new ReportCard(marksAllotment(80, 93, 76, 86), nikhil);
 nikhil.setReportCard(report3);
 
-const karan = new Student("Karan Singh", "23 dec 1996");
+const karan = new Student("Karan Singh", 23, 12, 1996);
 const report4 = new ReportCard(marksAllotment(95, 74, 80, 95), karan);
 karan.setReportCard(report4);
 
 
 // Teachers------------------------------------------------
 
-const pankaj = new Teacher("Pankaj Patel", '21 sept 1983');
+const pankaj = new Teacher("Pankaj Patel", 21, 9, 1986);
 pankaj.setSalary(45000);
 pankaj.setSubject(hindi);
 
-const manish = new Teacher("Manish Verma", '2 april 1985');
+const manish = new Teacher("Manish Verma", 2, 4, 1985);
 manish.setSalary(40000);
 manish.setSubject(english);
 
-const kartik = new Teacher("Kartik Dangi", '9 may 1988');
+const kartik = new Teacher("Kartik Dangi", 9, 3, 1988);
 kartik.setSalary(50000);
 kartik.setSubject(math);
 
-const vishal = new Teacher("Vishal Purohit", '27 august 1983');
+const vishal = new Teacher("Vishal Purohit", 27, 8, 1983);
 vishal.setSalary(35000);
 vishal.setSubject(science);
 
@@ -84,10 +84,7 @@ rose.setStudents(nikhil, karan);
 
 console.log(tulip.getTeacherByName("pankaj"));
 console.log(tulip.getStudentByName("vinay sharma").getAge());
-console.log(tulip.getStudentByName("vinay sharma").getReportCard());
-console.log(tulip.getStudentByName("kishan Patel").getName());
-// console.log();
-// console.log();
-// console.log();
-// console.log();
-// console.log();
+rose.getStudentByName("karan singh").getReportCard();
+console.log(tulip.getStudentByName("kishan Patel").getDateOfBirth());
+console.log(tulip.getTeachers());
+// rose.getStudents();

@@ -1,3 +1,6 @@
 export class Subject {
-    constructor(public name: string) {}
+    constructor(protected name: string) {}
+    getName() {
+        return this.name;
+    }
 }

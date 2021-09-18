@@ -20,6 +20,10 @@ export class Section {
     }
 
     getStudents() {
+        // for (let y of this.students) {
+        //     y.display();
+        //     console.log();
+        // }
         return this.students;
     }
     

@@ -18,6 +18,10 @@ export class Teacher extends Person {
     }
 
     getSubject() {
-        return this.subject;
+        return this.subject.getName();
+    }
+
+    display() {
+        console.log(`Name: "${this.name}"\nDOB: ${this.getDateOfBirth()}\nSalary: ${this.salary}\nSubject: ${this.getSubject()}`);
     }
 }

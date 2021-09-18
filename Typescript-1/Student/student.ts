@@ -9,6 +9,12 @@ export class Student extends Person {
     }
 
     getReportCard() {
-        return this.reportCard;
+        // console.log('Marks:- ')
+        this.reportCard.getMarks();
+    }
+
+    display() {
+        console.log(`Name: "${this.name}"\nDOB: ${this.getDateOfBirth()}`);
+        this.getReportCard();
     }
 }

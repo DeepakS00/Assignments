@@ -27,6 +27,10 @@ var Section = /** @class */ (function () {
         (_a = this.students).push.apply(_a, studentsArray);
     };
     Section.prototype.getStudents = function () {
+        // for (let y of this.students) {
+        //     y.display();
+        //     console.log();
+        // }
         return this.students;
     };
     Section.prototype.getTeacherByName = function (name) {
