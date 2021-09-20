@@ -1,2 +1,2 @@
 # Assignments
-Assignments completed during the typeScript training.
+Assignments done during my course of training.
