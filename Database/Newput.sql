@@ -42,6 +42,25 @@ values
 ('', '1985-11-11', '4 Privet Drive, Surrey', 'Indore', 'MP', 'M', 6);
 
 
+-- Updating Informations
+UPDATE Employee_info 
+SET 
+    name = CASE id
+        WHEN '2' THEN 'Joey Tribbiani'
+        WHEN '3' THEN 'Ross Geller'
+        WHEN '4' THEN 'Monica Geller'
+        WHEN '5' THEN 'Phoebe Buffay'
+        WHEN '6' THEN 'Rachel Green'
+    END
+WHERE
+    id BETWEEN 2 AND 6;
+
+UPDATE Employee_info 
+SET 
+    gender = 'F'
+WHERE
+    id = 6;
+
 -- Selecting all values from both tables
 SELECT * FROM Newput.Employees;
 SELECT * FROM Newput.Employee_info;
@@ -90,26 +109,7 @@ FROM
 ORDER BY salary DESC
 LIMIT 1 , 1;
 
--- Updating Informations
-UPDATE Employee_info 
-SET 
-    name = CASE id
-        WHEN '2' THEN 'Joey Tribbiani'
-        WHEN '3' THEN 'Ross Geller'
-        WHEN '4' THEN 'Monica Geller'
-        WHEN '5' THEN 'Phoebe Buffay'
-        WHEN '6' THEN 'Rachel Green'
-    END
-WHERE
-    id BETWEEN 2 AND 6;
-
-UPDATE Employee_info 
-SET 
-    gender = 'F'
-WHERE
-    id = 6;
-
--- Count of employee on basis of dob; - date, count
+-- Count of employee on basis of dob; - date
 SELECT 
     COUNT(dob)
 FROM
