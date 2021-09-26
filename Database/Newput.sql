@@ -1,8 +1,11 @@
 -- Database created and used
+
 CREATE DATABASE Newput;
 USE Newput;
 
+
 -- Created Tables Employees and Employee_info
+
 CREATE TABLE Employees (
     empId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     designation VARCHAR(50),
@@ -22,7 +25,9 @@ CREATE TABLE Employee_info (
         REFERENCES Employees (empId)
 );
 
+
 -- Inserted values in both tables
+
 insert into Employees (designation, salary, location)
 values
 ('Senior Developer', 55000, 'Indore'),
@@ -43,6 +48,7 @@ values
 
 
 -- Updating Informations
+
 UPDATE Employee_info 
 SET 
     name = CASE id
@@ -61,29 +67,39 @@ SET
 WHERE
     id = 6;
 
+
 -- Selecting all values from both tables
+
 SELECT * FROM Newput.Employees;
 SELECT * FROM Newput.Employee_info;
 
+
 -- Group by employee count on basis of location
+
 SELECT 
     COUNT(*), location
 FROM
     Employees
 GROUP BY location;
 
+
 -- Average, Sum of salary on basis of location
+
 SELECT 
     COUNT(*) as Count, AVG(salary) as Avg_salary, SUM(salary) as total_salary, location
 FROM
     Employees
 GROUP BY location;
 
+
 -- Select employes by there salary in descending
+
 Select * from Employees
 order by salary DESC;
 
+
 -- Name of those employee who are from indore
+
 Select Employee_info.name, Employees.location
 from Employees
 inner join Employee_info on Employees.empID = Employee_info.emp_ID
@@ -91,6 +107,7 @@ where location = 'Indore';
 
 
 -- Show name and there designations
+
 SELECT 
     name, designation
 FROM
@@ -100,6 +117,7 @@ FROM
 
 
 -- offset / limit - Get second highest salary of employee    
+
 SELECT 
     Employee_info.name, Employees.salary, Employees.designation
 FROM
@@ -109,7 +127,9 @@ FROM
 ORDER BY salary DESC
 LIMIT 1 , 1;
 
+
 -- Count of employee on basis of dob; - date
+
 SELECT 
     COUNT(dob)
 FROM
@@ -117,6 +137,7 @@ FROM
 
 
 -- Show count of location on basis Group by gender
+
 SELECT 
     COUNT(Employees.location) AS locatioins,
     Employee_info.gender
@@ -126,7 +147,9 @@ FROM
     Employee_info ON Employees.empID = Employee_info.emp_ID
 GROUP BY gender;
 
+
 -- Get name of employees whose name have alphabet 'a'
+
 SELECT 
     name
 FROM
