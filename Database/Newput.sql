@@ -172,6 +172,18 @@ FROM
     Employees
         INNER JOIN
     Employee_infos ON Employee_infos.emp_ID = Employees.empID;
+
+-- third smallest salary
+SELECT 
+	salary, empID
+FROM 
+	Employees
+ORDER BY salary ASC
+LIMIT 2, 1;
+
+-- Change name value from 20 to 50 as size
+ALTER TABLE Employee_infos
+MODIFY COLUMN Name VARCHAR(50);
  
 -- Get name of employees having Designation which have Developer in it (Don't use join) 
 SELECT
