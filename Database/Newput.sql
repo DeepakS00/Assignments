@@ -176,13 +176,12 @@ FROM
 -- Get name of employees having Designation which have Developer in it (Don't use join) 
 SELECT
 	designation as Designation, 
-		(
-        SELECT 
-			Name
-		FROM 
-			Employee_infos
-		WHERE Employees.empID = Employee_infos.emp_ID
-        ) as Name
+	(SELECT 
+		Name
+	FROM 
+		Employee_infos
+	WHERE Employees.empID = Employee_infos.emp_ID
+    ) as Name
 FROM 
 	Employees
 WHERE designation LIKE '%Developer%';
