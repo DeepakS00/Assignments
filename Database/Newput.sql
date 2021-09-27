@@ -175,9 +175,9 @@ FROM
 
 -- third smallest salary
 SELECT 
-	salary, empID
+    salary, empID
 FROM 
-	Employees
+    Employees
 ORDER BY salary ASC
 LIMIT 2, 1;
 
