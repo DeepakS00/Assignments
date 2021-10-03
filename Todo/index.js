@@ -1,29 +1,36 @@
-require('dotenv/config');
-const express = require('express');
-const app = express();
-// const bodyParser = require('body-parser');--> not a required feature for express v 4.16+
+require("dotenv").config();
+const express = require("express");
+const db = require("./Utils/database");
+const todo = require("./Models/tasks");
 
-const todo = [];
-const port = process.env.PORT || 2021;
+const app = express();
+// const todo = [];
+const port = process.env.PORT || 1998;
+
+db.sync({
+  alter: true, // this will drop if any and create new one
+})
+  .then(() => console.log("created"))
+  .catch((err) => console.log("Error:" + err));
 
 const middle1 = (req, res, next) => {
-    console.log('First Middleware function defined globally.');
-    next();
-}
+  console.log("First Middleware function defined globally.");
+  next();
+};
 
 const middle2 = (req, res, next) => {
-    console.log('Second middleware called');
-    next();
+  console.log("Second middleware called");
+  next();
 };
 
 // app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.text());
 
-app.use(middle1); 
+app.use(middle1);
 
-app.get('/', (req, res) => {
-    res.send(`<h1 style='color:rgb(138, 64, 35);text-align:center'>
+app.get("/", (req, res) => {
+  res.send(`<h1 style='color:rgb(138, 64, 35);text-align:center'>
         Hello and Welcome to my Todo App
         </h1>
         <br><br><h5 style='color:rgb(69, 44, 18);text-align:center'>
@@ -31,46 +38,52 @@ app.get('/', (req, res) => {
         </h5>`);
 });
 
-app.get('/todo', (req, res) => {
-    if (todo.length > 0) {
-        let list = "";
-        for (let x of todo) {
-            list += `<li>${x}</li>`;
-        }
-        res.send(`<h1 style='color:rgb(138, 64, 35)'>
-        Here is your todo list:-
-        </h1><br>
-        <h3 style='color:rgb(138, 64, 35)'>
-        <ul>${list}</ul>
-        </h3>`);
-    } else {
-        res.send('Enter the tasks in your list');
-    }
+app.get("/todo", (req, res) => {
+  return todo.findAll().then((tasks) => res.send(tasks));
 });
 
-app.post('/todo', middle2, (req, res) => {
-    todo.push(...Object.values(req.body));
-    res.send("Task completed successfully");
-})
+app.post("/todo", middle2, (req, res) => {
+  return todo
+    .create({
+      task: req.body.task,
+    })
+    .then(() => {
+      console.log("The task created successfully");
+      res.send("Done");
+    })
+    .catch((err) => console.log("Error:" + err));
+});
 
-app.put('/todo/:index', (req, res) => {
-    const index = (req.params.index > todo.length) ? todo.length : req.params.index;
-    todo[index] = Object.values(req.body)[0];
-    res.send('The task is successfully updated');
-})
+app.put("/todo/:index", (req, res) => {
+  return todo
+    .update(
+      {
+        task: req.body.task1,
+      },
+      {
+        where: {
+          id: req.params.index,
+        },
+      }
+    )
+    .then(() =>
+      res.send(`The task with id ${req.params.index} is successfully updated`)
+    );
+});
 
-app.patch('/todo/:index', (req, res) => {
-    const index = (req.params.index > todo.length) ? todo.length : req.params.index;
-    todo[index] = Object.values(req.body)[0];
-    res.send('The task is successfully updated');
-})
-
-app.delete('/todo/:index', (req, res) => {
-    todo.splice(req.params.index, 1);
-    res.send('Removed the specified task.');
-})
+app.delete("/todo/:index", (req, res) => {
+  return todo
+    .destroy({
+      force: true,
+      where: {
+        id: req.params.index,
+      },
+    })
+    .then(() =>
+      res.send(`The task with is ${req.params.index} has been deleted`)
+    );
+});
 
 app.listen(port, "localhost", () => {
-    console.log(`The server is now running at http://localhost:${port}/`);
+  console.log(`The server is now running at http://localhost:${port}/`);
 });
-
