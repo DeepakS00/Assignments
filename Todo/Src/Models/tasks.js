@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("../Utils/database");
 
-const table1 = db.define('tasks', {
+const taskModel = db.define('tasks', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -14,4 +14,4 @@ const table1 = db.define('tasks', {
     }
 });
 
-module.exports = table1;
+module.exports = taskModel;
