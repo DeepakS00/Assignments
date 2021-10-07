@@ -1,14 +1,13 @@
 require("dotenv").config();
 const express = require("express");
-const db = require("./Src/Utils/database");
-const todo = require("./Src/Routes/todo");
+const db = require("./src/utils/database");
+const todo = require("./src/routes/todo");
 const app = express();
 const port = process.env.PORT || 1998;
 
 db.sync({
   alter: true, // this will drop if any and create new one
-})
-  .then(() => console.log("created"))
+}).then(() => console.log("created"))
   .catch((err) => console.log("Error:" + err));
 
 const middle1 = (req, res, next) => {
@@ -17,7 +16,7 @@ const middle1 = (req, res, next) => {
 };
 
 app.use(express.json());
-app.use('/todo', todo);
+app.use("/todo", todo);
 app.use(middle1);
 
 app.get("/", (req, res) => {
