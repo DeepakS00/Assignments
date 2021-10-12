@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelizeConnection as db } from "../utils/database";
+import { sequelizeConnection as db } from "./utils/database";
 
 export interface IPostAttributes {
     id?: number;

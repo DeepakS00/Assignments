@@ -1,4 +1,4 @@
-import services from "../services/post-services";
+import services from "./services/post-services";
 import { Request, Response } from "express";
 import message from "../constants/message";
 

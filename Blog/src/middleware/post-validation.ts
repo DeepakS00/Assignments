@@ -1,4 +1,4 @@
-import schema from "../schemas/post-schema";
+import schema from "./schemas/post-schema";
 import { RequestHandler } from "express";
 
 // put an underscore for unused parameters like res in these cases.

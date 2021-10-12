@@ -1,5 +1,5 @@
-import { User } from "../models/user-model";
-import Token from "../helper/token";
+import { User } from "../../models/user-model";
+import Token from "../../helper/token";
 
 export const register = (full_name: string, email: string, password: string) => {
     return User.create({ 

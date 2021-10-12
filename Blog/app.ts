@@ -1,5 +1,5 @@
 import express, { Application } from "express";
-import { sequelizeConnection as db } from "./src/utils/database";
+import { sequelizeConnection as db } from "./src/models/utils/database";
 import { router as blog } from "./src/routes/blog-route";
 import { router as user } from "./src/routes/user-route";
 import config from "./src/config/config";

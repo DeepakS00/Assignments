@@ -1,4 +1,4 @@
-import { PostInstance as post } from "../models/post-model";
+import { PostInstance as post } from "../../models/post-model";
 
 const getAll = () => post.findAll(); 
 
