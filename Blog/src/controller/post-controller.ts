@@ -1,42 +1,51 @@
-import { PostInstance as post } from "../models/post-model";
+import services from "../services/post-services";
+import { Request, Response } from "express";
+import message from "../constants/message";
 
-// Get all the blog posts
-async function getAllPosts(): Promise<any[]> {
-    return await post.findAll();
-}
+const getPosts = async(_req: Request, res: Response) => {
+    try {
+        const result = await services.getAll();
+        res.send(result);
+    }
+    catch(e) {
+        res.send(`${e}`);
+    }
+};
 
-async function createPost(name: string, content: Text): Promise<void> {
-    await post.create({
-        author: name,
-        content: content,
-    });
-}
+const createPost = async(req: Request, res: Response) => {
+    try {
+        const result = await services.create(req.body.name, req.body.content);
+        res.send(message.createPost);
+    }
+    catch(e) {
+        res.send(`${e}`);
+    }
+};
 
-async function updatePost(id: number, name: string, content: Text): Promise<void> {
-    await post.update(
-        {
-            author: name,
-            content: content
-        },
-        {
-            where: {
-                id: id
-            }
-        })
-}
+const updatePost = async(req: Request, res: Response) => {
+    try {
+        const {name, content} = req.body;
+        await services.update(+req.params.id ,name, content);
+        res.send(message.updatePost)
+    }
+    catch(e) {
+        res.send(`${e}`);
+    }
+};
 
-async function deletePost(id: number): Promise<void> {
-    await post.destroy(
-        {
-            where: {
-                id: id
-            }
-        })
-}
+const deletePost = async(req: Request, res: Response) => {
+    try {
+        const result = await services.deleteBlog(+req.params.id);
+        res.send(message.deletePost);
+    }
+    catch(e) {
+        res.send(`${e}`);
+    }
+};
 
 export default {
-    getPosts: getAllPosts,
-    createPost: createPost,
-    updatePost: updatePost,
-    deletePost: deletePost
+    getPosts,
+    createPost,
+    updatePost,
+    deletePost,
 };
