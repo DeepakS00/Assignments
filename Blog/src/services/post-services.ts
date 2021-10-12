@@ -1,28 +1,24 @@
 import { PostInstance as post } from "../models/post-model";
 
-const getAll = () => {
-    return post.findAll();
-} 
+const getAll = () => post.findAll(); 
 
 const create = (name: string, content: Text) => {
     return post.create({
         author: name, 
         content: content
     });
-}
+};
 
-const update = (id: number, content: any, author: string) => {
+const update = (id: number, author: string, content: any) => {
     return post.update({
         author: author,
         content: content,
-    },{ where: { id: id } });
-}
+    },
+    { where: { id: id } },
+    );
+};
 
-const deleteBlog = (id: number) => {
-    return post.destroy({
-        where: { id: id }
-    });
-}
+const deleteBlog = (id: number) => post.destroy({ where: { id: id }} );
 
 export default {
     getAll,

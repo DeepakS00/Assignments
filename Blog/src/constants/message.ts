@@ -1,4 +1,5 @@
 export default {
+    welcome: `Welcome you are successfully logged in...🙏🏻`,
     createPost: `The post is created successfully.`,
     updatePost: `Successfully updated the blog.`,
     deletePost: `Successfully deleted the blog.`,

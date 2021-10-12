@@ -3,8 +3,9 @@ import { RequestHandler } from "express";
 import { User } from "../models/user-model";
 import message from "../constants/message";
 
+// put an underscore for unused parameters like res in these cases.
 
-const registerValidation: RequestHandler = async(req, res, next) => {
+const registerValidation: RequestHandler = async(req, _res, next) => {
     try {
         const {error} = await schema.registerSchema(req.body);
         if (error) throw new Error(error.details[0].message);
@@ -16,7 +17,7 @@ const registerValidation: RequestHandler = async(req, res, next) => {
     }
 };
 
-const logInValidation: RequestHandler = async(req, res, next) => {
+const logInValidation: RequestHandler = async(req, _res, next) => {
     try {
         const {error} = await schema.logInSchema(req.body);
         if (error) throw new Error(error.details[0].message);    
@@ -25,7 +26,6 @@ const logInValidation: RequestHandler = async(req, res, next) => {
         next(`${e}`);
     }
 };
-
 
 export default {
     registerValidation,

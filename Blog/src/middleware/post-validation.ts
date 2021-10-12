@@ -1,6 +1,8 @@
 import schema from "../schemas/post-schema";
 import { RequestHandler } from "express";
 
+// put an underscore for unused parameters like res in these cases.
+
 const postValidation: RequestHandler = async(req, _res, next) => {
     try {
         const {name, content} = req.body;
@@ -10,7 +12,7 @@ const postValidation: RequestHandler = async(req, _res, next) => {
     } catch(err) {
         next(`${err}`);
     }
-}
+};
 
 const updateValidation: RequestHandler = async(req, _res, next) => {
     try {
@@ -21,7 +23,7 @@ const updateValidation: RequestHandler = async(req, _res, next) => {
     } catch(err) {
         next(`${err}`);
     }
-}
+};
 
 const deleteValidation: RequestHandler = async(req, _res, next) => {
     try {
@@ -31,10 +33,10 @@ const deleteValidation: RequestHandler = async(req, _res, next) => {
     } catch(err) {
         next(`${err}`);
     }
-}
+};
 
 export default {
     postValidation,
     updateValidation,
     deleteValidation,
-}
+};

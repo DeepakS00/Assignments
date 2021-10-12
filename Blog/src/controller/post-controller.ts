@@ -14,7 +14,7 @@ const getPosts = async(_req: Request, res: Response) => {
 
 const createPost = async(req: Request, res: Response) => {
     try {
-        const result = await services.create(req.body.name, req.body.content);
+        await services.create(req.body.name, req.body.content);
         res.send(message.createPost);
     }
     catch(e) {
@@ -24,8 +24,8 @@ const createPost = async(req: Request, res: Response) => {
 
 const updatePost = async(req: Request, res: Response) => {
     try {
-        const {name, content} = req.body;
-        await services.update(+req.params.id ,name, content);
+        const { name, content } = req.body;
+        await services.update(+req.params.id, name, content);
         res.send(message.updatePost)
     }
     catch(e) {
@@ -35,7 +35,7 @@ const updatePost = async(req: Request, res: Response) => {
 
 const deletePost = async(req: Request, res: Response) => {
     try {
-        const result = await services.deleteBlog(+req.params.id);
+        await services.deleteBlog(+req.params.id);
         res.send(message.deletePost);
     }
     catch(e) {

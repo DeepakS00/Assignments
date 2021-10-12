@@ -1,7 +1,5 @@
-import * as jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import config from "../config/config";
-
-
 
 const secretKey: any = config.server.token.secret;
 

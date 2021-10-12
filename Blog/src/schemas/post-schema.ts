@@ -19,9 +19,11 @@ const updateSchema = (posts: object) => {
             .min(1)
             .required(),
         name: Joi.string()
-            .min(2),
+            .min(2)
+            .required(),
         content: Joi.string()
-            .min(5),
+            .min(5)
+            .required(),
     });
     return schema.validateAsync(posts);
 };

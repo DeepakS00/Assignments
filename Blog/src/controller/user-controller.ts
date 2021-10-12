@@ -25,7 +25,7 @@ export default class UserController {
             const validPass = await bcrypt.compare(password, user.getDataValue("password"));
             if (!validPass) throw new Error(message.invalid);        
             const token = login(user);
-            res.header('auth-token', token).send(`Welcome you are successfully logged in...🙏🏻`);
+            res.header('auth-token', token).send(message.welcome);
         } catch(e) {
             res.send(`${e}`);
         }
