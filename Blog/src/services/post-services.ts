@@ -1,6 +1,8 @@
-import { PostInstance as post } from "../../models/post-model";
+import { PostInstance as post } from "../models/post-model";
 
 const getAll = () => post.findAll(); 
+
+const getById = (id: number) => post.findByPk(id);
 
 const create = (name: string, content: Text) => {
     return post.create({
@@ -25,4 +27,5 @@ export default {
     create,
     update,
     deleteBlog,
+    getById,
 };

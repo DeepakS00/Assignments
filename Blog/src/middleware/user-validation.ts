@@ -1,4 +1,4 @@
-import schema from "./schemas/user-schema";
+import schema from "../helper/schemas/user-schema";
 import { RequestHandler } from "express";
 import { User } from "../models/user-model";
 import message from "../constants/message";

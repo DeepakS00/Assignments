@@ -8,4 +8,5 @@ export default {
     wrong: `Email or password is wrong`,
     invalid: `Invalid password`,
     denied: `Access denied`,
+    notFound: `Id not found, please enter a valid id.`,
 }

@@ -1,5 +1,5 @@
 import sequelize from "sequelize";
-import { sequelizeConnection as db } from "./utils/database";
+import { sequelizeConnection as db } from "../utils/database";
 
 export const User = db.define('users',
     {

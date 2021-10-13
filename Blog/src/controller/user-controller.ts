@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { register, login } from "./services/user-services";
+import { register, login } from "../services/user-services";
 import bcrypt from "bcryptjs";
 import { User } from "../models/user-model";
 import message from "../constants/message";
