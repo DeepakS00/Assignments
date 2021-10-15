@@ -1,7 +1,10 @@
 require("dotenv").config();
+
 const express = require("express");
 const db = require("./src/utils/database");
 const todo = require("./src/routes/todo");
+const swaggerUI = require("swagger-ui-express");
+const docs = require("./docs");
 const app = express();
 const port = process.env.PORT || 1998;
 
@@ -10,16 +13,17 @@ db.sync({
 }).then(() => console.log("created"))
   .catch((err) => console.log("Error:" + err));
 
-const middle1 = (req, res, next) => {
+const middle1 = (_req, _res, next) => {
   console.log("First Middleware function defined globally.");
   next();
 };
 
 app.use(express.json());
 app.use("/todo", todo);
-app.use(middle1);
+// app.use(middle1);
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(docs));
 
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.send(`<h1 style='color:rgb(138, 64, 35);text-align:center'>
         Hello and Welcome to my Todo App
         </h1>
