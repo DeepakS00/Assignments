@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   const input = { id: req.params.id, task: req.body.task };
-  const result = taskSchema(req.body + req.params);
+  const result = taskSchema(input);
   if (result.error) {
     res.send(`Error: ${result.error.details[0].message}`);
   } else {

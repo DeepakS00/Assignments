@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 1998;
 
 db.sync({
-  force: true, // this will drop if any and create new one
+  alter: true, // this will drop if any and create new one
 }).then(() => console.log("created"))
   .catch((err) => console.log("Error:" + err));
 

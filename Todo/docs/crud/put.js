@@ -17,6 +17,16 @@ module.exports = {
       },
     ],
 
+    requestBody: {
+      content: {
+        "application/json": {
+          schema: {
+            $ref: "#/components/schemas/TodoPost"
+          },
+        },
+      },
+    },
+
     responses: {
       200: {
         description: "Todo updated successfully",
