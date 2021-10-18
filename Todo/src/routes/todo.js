@@ -3,14 +3,13 @@ const router = express.Router();
 const todo = require("../models/tasks");
 const taskSchema = require("../helpers/validation_schema");
 
-router.get("/", async (req, res) => {
+router.get("/", async (_req, res) => {
   try {
     const response = await todo.findAll();
     res.json(response);
   } catch (error) {
     res.send(error);
   }
-  // return todo.findAll().then((tasks) => res.send(tasks));
 });
 
 router.post("/", async (req, res) => {
@@ -37,14 +36,8 @@ router.put("/:id", async (req, res) => {
   } else {
     try {
       await todo.update(
-        {
-          task: req.body.task,
-        },
-        {
-          where: {
-            id: req.params.id,
-          },
-        }
+        { task: req.body.task },
+        { where: { id: req.params.id } }
       );
       res.send(`The task with id ${req.params.id} is successfully updated`);
     } catch (error) {

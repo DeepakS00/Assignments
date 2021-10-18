@@ -1,13 +1,13 @@
-import {DataTypes, Model} from "sequelize";
-import {sequelizeConnection as db} from "../utils/config";
+import { DataTypes, Model } from "sequelize";
+import { sequelizeConnection as db } from "../utils/database";
 
-interface IBlogAttributes {
+export interface IPostAttributes {
     id?: number;
     author: string;
     content: Text;
 }
 
-export class PostInstance extends Model<IBlogAttributes> {}
+export class PostInstance extends Model<IPostAttributes> {}
 
 PostInstance.init (
     {
