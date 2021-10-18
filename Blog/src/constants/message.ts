@@ -9,4 +9,4 @@ export default {
     invalid: `Invalid password`,
     denied: `Access denied`,
     notFound: `Id not found, please enter a valid id.`,
-}
+};

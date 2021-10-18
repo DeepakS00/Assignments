@@ -16,8 +16,9 @@ const postValidation: RequestHandler = async(req, _res, next) => {
 
 const updateValidation: RequestHandler = async(req, _res, next) => {
     try {
+        const id = parseInt(req.params.id);
         const {name, content} = req.body;
-        const { error } = await schema.updateSchema({ id: req.params.id, name, content });
+        const { error } = await schema.updateSchema({ id, name, content });
         if (error) throw new Error(error.details[0].message);
         next();
     } catch(err) {
@@ -27,7 +28,8 @@ const updateValidation: RequestHandler = async(req, _res, next) => {
 
 const deleteValidation: RequestHandler = async(req, _res, next) => {
     try {
-        const { error } = await schema.deleteSchema(+req.params.id);
+        const id = parseInt(req.params.id);
+        const { error } = await schema.deleteSchema(id);
         if (error) throw new Error(error.details[0].message);
         next();
     } catch(err) {
