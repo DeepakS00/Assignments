@@ -18,7 +18,7 @@ app.use("/user", user);
 app.set("view engine", "ejs");
 
 app.get("/", (_req, res) => {
-    res.render("layout");
+    res.render("index", { title: "Home" });
 });
 
 app.listen(port, () => {

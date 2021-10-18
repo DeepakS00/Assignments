@@ -14,7 +14,8 @@ const getPosts = async(_req: Request, res: Response) => {
 
 const getById = async(req: Request, res: Response) => {
     try {
-        const result = await services.getById(+req.params.id);
+        const id = parseInt(req.params.id)
+        const result = await services.getById(id);
         if (result === null) throw new Error(message.notFound);
         res.json({ 
             message: `Hey ${result.getDataValue("author")} here is your blog.`,
@@ -38,11 +39,12 @@ const createPost = async(req: Request, res: Response) => {
 
 const updatePost = async(req: Request, res: Response) => {
     try {
+        const id = parseInt(req.params.id)
         const { name, content } = (req.body as { name: string, content: Text });
-        const check = await services.getById(+req.params.id);
+        const check = await services.getById(id);
         if (check === null) throw new Error(message.notFound);
-        const result = await services.update(+req.params.id, name, content);
-        res.json({ message: message.updatePost, updated: await services.getById(+req.params.id) })
+        await services.update(id, name, content);
+        res.json({ message: message.updatePost, updated: await services.getById(id) })
     }
     catch(err) {
         res.json({ message: `${err}`});
@@ -51,7 +53,8 @@ const updatePost = async(req: Request, res: Response) => {
 
 const deletePost = async(req: Request, res: Response) => {
     try {
-        await services.deleteBlog(+req.params.id);
+        const id = parseInt(req.params.id)
+        await services.deleteBlog(id);
         res.json({ message: `message.deletePost` });
     }
     catch(err) {

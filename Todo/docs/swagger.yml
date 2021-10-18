@@ -1,0 +1,13 @@
+openapi: 3.0.3
+info: 
+  title: Todo App
+  description: This is a simple todo crud application
+  version: 1.0.0
+  contact: 
+    email: deepakshukla923@gmail.com
+
+servers: 
+  - url: http://localhost:2021
+    description: The home page url
+
+paths: {}
