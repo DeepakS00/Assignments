@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { register, login } from "../services/user-services";
+import { mailer } from "../services/mail-services";
 import bcrypt from "bcryptjs";
 import { User } from "../models/user-model";
 import message from "../constants/message";
@@ -11,6 +12,7 @@ export default class UserController {
             const { full_name, email, password } = req.body;
             const encryptedPassword = await bcrypt.hash(password, 12);
             await register(full_name, email, encryptedPassword);
+            mailer(full_name, email);
             res.send(`Hi ${req.body.full_name} you are successfully registerd...😊`);
         } catch(e) {
             res.send(`${e}`);
