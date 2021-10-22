@@ -10,3 +10,4 @@ export const router: Router = Router();
 router.post("/", upload, uploadFiles);
 router.get("/ModelTypes", controller.forModelType);
 router.get("/Tails", controller.forAircraftTails);
+router.get("/SizeClass", controller.forAircraftSizeClass);
