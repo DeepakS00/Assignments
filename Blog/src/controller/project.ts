@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { getDetails } from "../services/findDetails";
-import { table2, table3 } from "../sample";
+import { getDetails, forTable1 } from "../services/findDetails";
+import { table1, table2, table3 } from "../sample";
 
 const forModelType = async (_req: Request, res: Response) => {
   try {
@@ -20,7 +20,17 @@ const forAircraftTails = async (_req: Request, res: Response) => {
   }
 };
 
+const forAircraftSizeClass = async (_req: Request, res: Response) => {
+  try {
+    const data = await forTable1("aircraftSizeClass/", table1);
+    res.json(data);
+  } catch (err) {
+    res.send(`${err}`);
+  }
+};
+
 export default {
   forModelType,
   forAircraftTails,
+  forAircraftSizeClass,
 };

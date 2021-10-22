@@ -1,11 +1,11 @@
 export const table1 = [
-  "single-piston",
-  "multi-piston",
-  "turbo-prop",
-  "light-jet",
-  "midsize-jet",
-  "super-mid-jet",
-  "heavy-jet",
+  "singlepiston",
+  "multipiston",
+  "turboprop",
+  "lightjet",
+  "midsize",
+  "supermid",
+  "heavyjet",
   "airliner",
   "helicopter",
 ];
