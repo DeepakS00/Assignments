@@ -6,7 +6,7 @@ export const uploadFiles = async (req: Request, res: Response) => {
     const file = req.file;
     console.log(file);
     await uploadFile(file);
-    res.send(file);
+    res.send("done");
   } catch (err) {
     res.json({ message: `${err}`});
   }
